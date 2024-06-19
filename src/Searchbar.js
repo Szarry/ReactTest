@@ -1,44 +1,67 @@
-import { TextField } from "@mui/material";
-import { InputAdornment } from "@mui/material";
-import { IconButton } from "@mui/material";
+import React, { Component } from 'react';
+import { TextField, InputAdornment, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState, useEffect } from "react";
 
-const Searchbar = ({ setRecipes }) => {
-    const [query, setQuery] = useState("chicken");
+const APP_ID = 'e303bb34';
+const APP_KEY = '6fb077a66abfdb1d9b6581fddbcb23a4';
+const BASE_URL = 'https://api.edamam.com/api/recipes/v2';
 
-    async function fetchRecipes() {
-        const response = await fetch(
-            `https://api.edamam.com/api/recipes/v2?q=${query}&type=public`,
+class Searchbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: 'bacon',
+        };
+    }
+
+    fetchRecipes = async () => {
+        const { query } = this.state;
+        const url = `${BASE_URL}?q=${query}&type=public&app_id=${APP_ID}&app_key=${APP_KEY}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            this.props.setRecipes(data.hits);
+        } catch (error) {
+            console.error('Failed to fetch:', error);
+        }
+    };
+
+    handleChange = (event) => {
+        this.setState({ query: event.target.value });
+    };
+
+    handleSearchClick = () => {
+        this.fetchRecipes();
+    };
+
+    componentDidMount() {
+        this.fetchRecipes();
+    }
+
+    render() {
+        const { query } = this.state;
+
+        return (
+            <TextField
+                label="Wyszukaj"
+                value={query}
+                onChange={this.handleChange}
+                InputProps={{
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            <IconButton onClick={this.handleSearchClick}>
+                                <SearchIcon />
+                            </IconButton>
+                        </InputAdornment>
+                    ),
+                }}
+                fullWidth
+            />
         );
-        const data = await response.json();
-        setRecipes(data.hits);
     }
-
-    function handleChange(event) {
-        setQuery(event.target.value);
-    }
-
-    useEffect(() => {
-        fetchRecipes();
-    }, [query]);
-
-    return (
-        <TextField
-            label="Wyszukaj"
-            onChange={handleChange}
-            InputProps={{
-                endAdornment: (
-                    <InputAdornment>
-                        <IconButton onClick={fetchRecipes}>
-                            <SearchIcon />
-                        </IconButton>
-                    </InputAdornment>
-                ),
-            }}
-            fullWidth
-        />
-    );
-};
+}
 
 export default Searchbar;

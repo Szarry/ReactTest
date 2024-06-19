@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from './Header';
-import { RecipesList } from './RecipesList'; // Upewnij się, że importujesz jako named import
+import { RecipesList } from './RecipesList';
 
 function App() {
     const [recipes, setRecipes] = useState([]);
@@ -10,7 +10,7 @@ function App() {
         <div className="App">
             <Header setRecipes={setRecipes} />
             <div className="content">
-                <RecipesList recipes={recipes} /> {/* Użycie komponentu RecipesList */}
+                <RecipesList recipes={recipes} /> {}
             </div>
         </div>
     );

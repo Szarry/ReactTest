@@ -1,19 +1,19 @@
 .header-main {
-    background-color: #0002de;
-    background-image: linear-gradient(90deg, #0002de 0%, #f711fb 50%, #ffffff 100%);
+    background-color: #30de00;
+    background-image: linear-gradient(90deg, #00de90 0%, #c1fb11 50%, #ffcc00 100%);
 }
 
 /* Styles for tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
     .header-main {
-        background-color: #123abc; /* Example change for tablet */
+        background-color: #40ff00; /* Example change for tablet */
     }
 }
 
 /* Styles for smartphone */
 @media (max-width: 767px) {
     .header-main {
-        background-color: #345def; /* Example change for smartphone */
+        background-color: #30de00; /* Example change for smartphone */
         background-image: linear-gradient(90deg, #345def 0%, #abcdef 50%, #ffffff 100%);
     }
 }

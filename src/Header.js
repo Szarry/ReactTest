@@ -7,23 +7,23 @@ import { Button, Container } from "@mui/material";
 import Searchbar from './Searchbar';
 import './Header.css';
 
-export default function ButtonAppBar({ setRecipes }) { // Przekazanie setRecipes jako props
+export default function ButtonAppBar({ setRecipes }) {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" className="header-main">
                 <Toolbar>
                     <Typography
-                        variant="h6"
+                        variant="h3"
                         component="div"
                         sx={{ flexGrow: 1 }}
                     >
-                        News
+                        Pyszne jedzonko
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
             <Container maxWidth="md">
-                <Searchbar setRecipes={setRecipes} /> {/* Przekazanie setRecipes do Searchbar */}
+                <Searchbar setRecipes={setRecipes} /> {}
             </Container>
         </Box>
     );
