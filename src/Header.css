@@ -1,22 +1,19 @@
 .header-main {
-    background-image: linear-gradient(90deg, #4a90e2 0%, #50e3c2 100%);
-    color: #ffffff;
-}
-
-.searchbar-container {
-    margin-top: 10px;
+    background-color: #0002de;
+    background-image: linear-gradient(90deg, #0002de 0%, #f711fb 50%, #ffffff 100%);
 }
 
 /* Styles for tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
     .header-main {
-        font-size: 1.2rem;
+        background-color: #123abc; /* Example change for tablet */
     }
 }
 
 /* Styles for smartphone */
 @media (max-width: 767px) {
     .header-main {
-        font-size: 1rem;
+        background-color: #345def; /* Example change for smartphone */
+        background-image: linear-gradient(90deg, #345def 0%, #abcdef 50%, #ffffff 100%);
     }
 }

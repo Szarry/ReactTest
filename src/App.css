@@ -1,17 +1,5 @@
 .App {
   text-align: center;
-  background-color: #f5f7fa;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-family: 'Roboto', sans-serif;
-}
-
-.content {
-  width: 100%;
-  padding: 20px;
 }
 
 .App-logo {
@@ -26,20 +14,18 @@
 }
 
 .App-header {
-  background-color: #4a4a4a;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
+  color: white;
 }
 
 .App-link {
-  color: #4a90e2;
+  color: #61dafb;
 }
 
 .center-container {
@@ -47,7 +33,6 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 20px;
 }
 
 @keyframes App-logo-spin {
@@ -59,12 +44,14 @@
   }
 }
 
+/* Styles for tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
   .App-header {
     font-size: calc(8px + 2vmin);
   }
 }
 
+/* Styles for smartphone */
 @media (max-width: 767px) {
   .App-header {
     font-size: calc(6px + 2vmin);
