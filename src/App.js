@@ -1,14 +1,16 @@
-import "./App.css";
-// import {Header} from "./Header";
-import Header from "./Header";
-import FullWidthTextField from "./Searchbar";
+import React, { useState } from 'react';
+import './App.css';
+import Header from './Header';
+import { RecipesList } from './RecipesList'; // Upewnij się, że importujesz jako named import
 
 function App() {
+    const [recipes, setRecipes] = useState([]);
+
     return (
         <div className="App">
-            <Header/>
-            <div className="center-container">
-                <FullWidthTextField/>
+            <Header setRecipes={setRecipes} />
+            <div className="content">
+                <RecipesList recipes={recipes} /> {/* Użycie komponentu RecipesList */}
             </div>
         </div>
     );
