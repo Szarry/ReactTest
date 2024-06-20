@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import Header from './Header';
-import { RecipesList } from './RecipesList';
+import RecipesList from "./RecipesList";
+
 
 function App() {
     const [recipes, setRecipes] = useState([]);

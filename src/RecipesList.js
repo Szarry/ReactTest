@@ -1,11 +1,22 @@
-import { Grid, Card, CardMedia, CardContent, Typography } from "@mui/material";
+import React from 'react';
+import { Grid, Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
 
 const StyledCard = styled(Card)`
     height: 100%;
 `;
 
-export const RecipesList = ({ recipes }) => {
+const IngredientBox = styled(Box)`
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+`;
+
+const RecipesList = ({ recipes }) => {
+    const limitedRecipes = recipes.slice(0, 10);
+
     return (
         <Grid
             container
@@ -13,7 +24,7 @@ export const RecipesList = ({ recipes }) => {
             columnSpacing={5}
             padding={{ xs: 1, md: 3, lg: 5 }}
         >
-            {recipes.map((recipe) => (
+            {limitedRecipes.map((recipe) => (
                 <Grid item xs={12} md={6} lg={4} key={recipe.recipe.label}>
                     <StyledCard>
                         <CardMedia
@@ -30,11 +41,15 @@ export const RecipesList = ({ recipes }) => {
                             >
                                 {recipe.recipe.label}
                             </Typography>
-                            {recipe.recipe.ingredientLines.map((ingredientLine, index) => (
-                                <Typography key={index} gutterBottom variant="body2" component="div">
-                                    {ingredientLine}
-                                </Typography>
-                            ))}
+                            <Box>
+                                {recipe.recipe.ingredientLines.map((ingredientLine, index) => (
+                                    <IngredientBox key={index}>
+                                        <Typography variant="body2" component="span">
+                                            {ingredientLine}
+                                        </Typography>
+                                    </IngredientBox>
+                                ))}
+                            </Box>
                         </CardContent>
                     </StyledCard>
                 </Grid>
@@ -42,3 +57,5 @@ export const RecipesList = ({ recipes }) => {
         </Grid>
     );
 };
+
+export default RecipesList;
