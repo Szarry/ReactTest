@@ -37,7 +37,7 @@ class Searchbar extends Component {
         this.fetchRecipes();
     };
 
-    handleKeyPress = (event) => {
+    handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             this.fetchRecipes();
         }
@@ -55,7 +55,7 @@ class Searchbar extends Component {
                 label="Wyszukaj"
                 value={query}
                 onChange={this.handleChange}
-                onKeyPress={this.handleKeyPress}
+                onKeyDown={this.handleKeyDown}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">
